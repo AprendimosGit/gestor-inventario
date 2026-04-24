@@ -13,3 +13,5 @@ Aplicación web para la gestión de inventario interno, permitiendo el control d
 - Romano, Matias - @MatyRom
 - Llanos, Fernanda - @fernandallanos13
 - Moreno, Alejo - @MorenoAlej0
+- Dayana Ronco - @usuario
+- Gonzalo, Baburto - @usuario
