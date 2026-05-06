@@ -1,0 +1,7 @@
+
+:target {
+  background-color: #ffffcc; /* Un color amarillo suave para resaltar */
+  border-left: 5px solid orange; /* Una línea lateral para llamar la atención */
+  padding: 10px;
+  transition: background-color 0.5s ease; /* Para que el resaltado sea suave */
+}
