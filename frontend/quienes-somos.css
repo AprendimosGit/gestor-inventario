@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #CCC5B7;
+    color: #6F5D44;
+    display: flex;
+    min-height: 100vh;
+}
+ 
+/* ── Sidebar ── */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #6F5D44;
+    padding: 30px 20px;
+    color: white;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+ 
+.sidebar h2 {
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+ 
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+ 
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+ 
+.sidebar a:hover {
+    color: #CCC5B7;
+}
+ 
+/* ── Main ── */
+.dashboard {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+ 
+/* ── Header ── */
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+ 
+.header p {
+    font-size: 15px;
+}
+ 
+/* ── Panels ── */
+.panel {
+    background-color: #F5F2EC;
+    padding: 25px;
+    border-radius: 15px;
+}
+ 
+.panel h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+ 
+/* ── List cards ── */
+.alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+ 
+.alerts li {
+    background-color: #fff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 5px solid #8B7355;
+}
+ 
+/* ── Team grid ── */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+ 
+.team-card {
+    background-color: #fff;
+    border-left: 5px solid #8B7355;
+    border-radius: 10px;
+    padding: 18px 20px;
+}
+ 
+.team-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+ 
+.team-role {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+ 
+.team-user {
+    font-size: 13px;
+    color: #8B7355;
+}
+ 
+/* ── Footer ── */
+footer {
+    text-align: center;
+    padding: 16px 0 0;
+    font-size: 12px;
+    color: #6F5D44;
+    border-top: 1px solid #8B7355;
+}
