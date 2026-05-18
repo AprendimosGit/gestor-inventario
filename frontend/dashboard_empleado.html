@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Empleado | PizzaStock</title>
+  <link rel="stylesheet" href="dashboard_empleado.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2>PizzaStock</h2>
+    <nav>
+      <a href="landing.html">Inicio</a>
+      <a href="#">Stock</a>
+      <a href="#">Registrar venta</a>
+      <a href="#">Alertas</a>
+      <a href="#">Movimientos</a>
+    </nav>
+  </aside>
+
+  <main class="dashboard">
+    <header class="header">
+      <div>
+        <h1>Panel del Empleado</h1>
+        <p>Control rápido de stock para pizzas y lomos.</p>
+      </div>
+      <input type="text" placeholder="Buscar ingrediente o producto...">
+    </header>
+
+    <section class="cards">
+      <article class="card">
+        <h3>Muzzarella</h3>
+        <p>Stock disponible: 4 kg</p>
+        <span class="status low">Stock bajo</span>
+      </article>
+
+      <article class="card">
+        <h3>Salsa</h3>
+        <p>Stock disponible: 6 litros</p>
+        <span class="status ok">Disponible</span>
+      </article>
+
+      <article class="card">
+        <h3>Pan de lomo</h3>
+        <p>Stock disponible: 24 unidades</p>
+        <span class="status ok">Disponible</span>
+      </article>
+
+      <article class="card">
+        <h3>Carne para lomo</h3>
+        <p>Stock disponible: 3 kg</p>
+        <span class="status warning">Revisar stock</span>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <h2>Registrar venta rápida</h2>
+
+        <form>
+          <label for="producto">Producto vendido</label>
+          <select id="producto">
+            <option>Pizza Muzzarella</option>
+            <option>Pizza Especial</option>
+            <option>Pizza Napolitana</option>
+            <option>Lomo Simple</option>
+            <option>Lomo Completo</option>
+          </select>
+
+          <label for="cantidad">Cantidad</label>
+          <input type="number" id="cantidad" placeholder="Ej: 2">
+
+          <button type="button">Registrar venta</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Alertas de stock</h2>
+        <ul class="alerts">
+          <li>Harina próxima a agotarse.</li>
+          <li>Muzzarella con stock bajo.</li>
+          <li>Revisar disponibilidad de carne para lomos.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Movimientos recientes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Movimiento</th>
+            <th>Producto</th>
+            <th>Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Venta</td>
+            <td>Pizza Muzzarella x2</td>
+            <td>Se descontó muzzarella, salsa, harina y cajas.</td>
+          </tr>
+          <tr>
+            <td>Venta</td>
+            <td>Lomo Completo x1</td>
+            <td>Se descontó pan, carne, queso, lechuga y tomate.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>

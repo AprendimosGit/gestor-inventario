@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrador | PizzaStock</title>
+    <link rel="stylesheet" href="../frontend/dashboard.css">
+</head>
+<body>
+    <aside class="sidebar">
+
+    <h2>PizzaStock</h2>
+
+    <nav>
+      <a href="landing.html">Inicio</a>
+      <a href="#">Productos</a>
+      <a href="#">Reposición de stock</a>
+      <a href="#">Usuarios</a>
+      <a href="#">Reportes</a>
+      <a href="#">Alertas</a>
+      <a href="#">Configuración</a>
+    </nav>
+
+  </aside>
+
+  <main class="dashboard">
+    <header class="header">
+      <div>
+        <h1>Panel Administrador</h1>
+
+        <p>Gestión completa del inventario, usuarios y productos.</p>
+      </div>
+
+      <input type="text" placeholder="Buscar producto, usuario o reporte...">
+    </header>
+
+    <section class="cards">
+
+      <article class="card">
+        <h3>Ventas del día</h3>
+        <p>58 ventas registradas</p>
+        <span class="status ok">Actualizado</span>
+      </article>
+
+      <article class="card">
+        <h3>Stock bajo</h3>
+        <p>4 productos requieren reposición</p>
+        <span class="status low">Atención</span>
+      </article>
+
+      <article class="card">
+        <h3>Productos cargados</h3>
+        <p>128 productos registrados</p>
+        <span class="status_ok">Activo</span>
+      </article>
+
+      <article class="card">
+        <h3>Usuarios activos</h3>
+        <p>7 empleados conectados</p>
+        <span class="status_warning">Supervisar</span>
+      </article>
+
+    </section>
+
+    <section class="content-grid">
+
+      <article class="panel">
+
+        <h2>Reposición de stock</h2>
+
+        <form>
+          <label for="producto">
+            Producto
+          </label>
+
+          <select id="producto">
+            <option>Muzzarella</option>
+            <option>Harina</option>
+            <option>Pan de lomo</option>
+            <option>Carne para lomo</option>
+          </select>
+
+          <label for="cantidad">Cantidad ingresada</label>
+
+          <input type="number" id="cantidad" placeholder="Ej: 20">
+
+          <label for="proveedor">Proveedor</label>
+
+          <input type="text" id="proveedor" placeholder="Ingrese proveedor">
+
+          <button type="button">Cargar stock</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Gestión rápida</h2>
+
+        <ul class="alerts">
+          <li>Agregar nuevo producto</li>
+          <li>Modificar precios</li>
+          <li>Gestionar usuarios</li>
+          <li>Visualizar reportes</li>
+          <li>Configurar permisos</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Gestión de productos</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Muzzarella</td>
+            <td>Lácteos</td>
+            <td>4 kg</td>
+            <td>$8500</td>
+            <td>Stock bajo</td>
+            <td>Editar</td>
+          </tr>
+
+          <tr>
+            <td>Harina</td>
+            <td>Insumos</td>
+            <td>12 kg</td>
+            <td>$4200</td>
+            <td>Disponible</td>
+            <td>Actualizar</td>
+          </tr>
+
+          <tr>
+            <td>Pan de lomo</td>
+            <td>Panificados</td>
+            <td>10 unidades</td>
+            <td>$1800</td>
+            <td>Reposición necesaria</td>
+            <td>Editar</td>
+          </tr>
+
+          <tr>
+            <td>Carne para lomo</td>
+            <td>Carnes</td>
+            <td>3 kg</td>
+            <td>$12500</td>
+            <td>Crítico</td>
+            <td>Actualizar</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="panel">
+      <h2>Alertas del sistema</h2>
+
+      <ul class="alerts">
+        <li>Muzzarella con stock bajo.</li>
+        <li>Harina próxima a agotarse.</li>
+        <li>Pan de lomo requiere reposición.</li>
+        <li>3 usuarios necesitan actualización de permisos.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
