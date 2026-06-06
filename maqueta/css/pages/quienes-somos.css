@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.header p {
+    font-size: 15px;
+}
+
+.panel h2 {
+    font-size: 22px;
+}
+
+.alerts {
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.alerts li {
+    padding: 12px 16px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.team-card {
+    background-color: #fff;
+    border-left: 5px solid #8B7355;
+    border-radius: 10px;
+    padding: 18px 20px;
+}
+
+.team-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.team-role {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.team-user {
+    font-size: 13px;
+    color: #8B7355;
+}
+
+footer {
+    text-align: center;
+    padding: 16px 0 0;
+    font-size: 12px;
+    color: #6F5D44;
+    border-top: 1px solid #8B7355;
+}
