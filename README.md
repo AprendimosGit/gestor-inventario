@@ -1,108 +1,29 @@
-# Introducción
+# PizzaFlow - Sistema de control de stock para locales de comida
 
-El presente proyecto consiste en el desarrollo de un sistema de gestión de stock orientado a un local gastronómico dedicado a la venta de pizzas y lomos. El objetivo principal del sistema es facilitar el control de inventario, el registro de ventas y la administración de productos, permitiendo automatizar procesos que normalmente se realizan de manera manual.
+## Introducción
 
-Actualmente, muchos pequeños comercios gestionan el stock utilizando planillas o registros escritos, lo que puede generar errores, pérdidas de información y dificultades para controlar las cantidades reales disponibles. Este sistema busca resolver esa problemática mediante una interfaz simple e intuitiva que permita actualizar automáticamente el inventario a partir de las ventas realizadas y de la reposición de mercadería.
+PizzaFlow es un sistema web de gestión de inventario diseñado para locales de comida como pizzerías y lomiterías. Permite a los empleados y administradores registrar ventas, controlar el stock de ingredientes y gestionar reposiciones de mercadería, con el objetivo de evitar la falta de insumos y mantener el inventario siempre actualizado.
 
-Además, el sistema incorpora distintos roles de usuario (administrador y empleado), permitiendo controlar permisos y funcionalidades según el perfil de cada usuario.
+## Funcionalidades del sistema
 
----
+- Registro de ventas: el empleado selecciona el producto vendido y la cantidad; el sistema descuenta automáticamente los ingredientes del inventario.
+- Reposición de stock: el administrador registra el ingreso de mercadería indicando producto, cantidad, unidad de medida y proveedor.
+- Consulta de stock: visualización del estado actual de cada ingrediente o producto.
+- Historial de movimientos: registro de todas las operaciones realizadas (ventas y reposiciones).
+- Alertas de stock bajo: notificación automática cuando un ingrediente cae por debajo del mínimo definido.
 
-# Funcionalidades del proyecto
+## Instalación y ejecución de la maqueta
 
-El sistema cuenta con las siguientes funcionalidades principales:
+Este proyecto no requiere instalación de dependencias ni servidor.
 
-- Inicio de sesión con control de roles y permisos.
-- Registro de ventas de pizzas, lomos y otros productos.
-- Descuento automático de ingredientes del stock al realizar una venta.
-- Registro de ingreso/reposición de mercadería.
-- Visualización de alertas de stock bajo.
-- Consulta de productos e ingredientes disponibles.
-- Gestión de productos e ingredientes del inventario.
-- Historial de movimientos del sistema.
-- Dashboard diferenciado para administradores y empleados.
+Pasos para ejecutar:
 
----
+1. Clonar o descargar el repositorio.
+2. Abrir la carpeta `maqueta`.
+3. Abrir el archivo `index.html` en cualquier navegador web.
 
-# Lógicas de negocio y funcionamiento
+## Personas involucradas
 
-El sistema fue diseñado para automatizar procesos básicos de control de inventario dentro de un local gastronómico. Su funcionamiento se basa en la interacción entre las ventas realizadas, el stock disponible y los distintos permisos de usuario.
-
-## Control automático de stock
-
-Cada producto vendido posee ingredientes asociados previamente cargados en el sistema. Por ejemplo, al registrar la venta de una pizza muzzarella, el sistema descuenta automáticamente ingredientes como harina, salsa, queso y cajas de pizza. De esta manera, el inventario se mantiene actualizado en tiempo real sin necesidad de modificar manualmente cada ingrediente.
-
-## Registro de ingreso de mercadería
-
-Los usuarios con permisos de administrador pueden registrar ingresos de stock al sistema. Esto permite actualizar las cantidades disponibles de ingredientes o productos cuando se realiza una compra o reposición de mercadería.
-
-Cada ingreso queda registrado en un historial con:
-
-- fecha
-- hora
-- usuario responsable
-- producto ingresado
-- cantidad y unidad de medida
-
----
-
-# Roles y permisos
-
-El sistema diferencia distintos tipos de usuarios:
-
-## Administrador principal
-
-Posee acceso completo al sistema:
-
-- gestión de productos
-- actualización de precios
-- carga de stock
-- visualización de reportes
-- administración de usuarios y permisos
-
-## Empleado administrador
-
-Puede realizar tareas operativas avanzadas autorizadas por el administrador principal, como actualizar stock o modificar determinados productos.
-
-## Empleado común
-
-Tiene acceso limitado a:
-
-- registrar ventas
-- consultar stock
-- visualizar alertas
-
-No puede modificar productos ni gestionar usuarios.
-
----
-
-# Validaciones del sistema
-
-El sistema incorpora validaciones para evitar inconsistencias en el inventario:
-
-- No se permite registrar ventas sin stock suficiente.
-- Las cantidades deben ser mayores a cero.
-- Solo usuarios autorizados pueden acceder a funciones administrativas.
-- El sistema registra automáticamente los movimientos importantes para mantener trazabilidad.
-
----
-
-# Historial de movimientos
-
-Cada acción relevante genera un registro dentro del historial del sistema, permitiendo mantener un control de:
-
-- ventas
-- ingresos de mercadería
-- modificaciones de stock
-- acciones administrativas
-
-Esto facilita el seguimiento interno y mejora el control general del negocio.
-
----
-
-# Instrucciones básicas para instalar y ejecutar la maqueta
--Clonar el repositorio desde GitHub:
-git clone https://github.com/AprendimosGit/gestor-inventario.git
--Abrir la carpeta del proyecto utilizando Visual Studio Code.
--Acceder a la carpeta “frontend”.
--Abrir los archivos HTML en el navegador para visualizar la maqueta del sistema.
+- Alejo Moreno — [@MorenoAlej0](https://github.com/MorenoAlej0)
+- Fernanda Llanos — [@fernandallanos13](https://github.com/fernandallanos13)
+- Matias Romano — [@MatyRom](https://github.com/MatyRom)

@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="d-flex flex-column p-3" style="width: 250px; min-height: 100vh; background-color: #6F5D44;">
-    <h2 class="text-white mb-4">StockFlow</h2>
+    <h2 class="text-white mb-4">PizzaFlow</h2>
     <nav class="nav flex-column">
       <a class="nav-link text-white" href="index.html">Inicio</a>
       <a class="nav-link text-white" href="#">Productos</a>
@@ -86,6 +86,14 @@
           <label for="proveedor">Proveedor</label>
 
           <input type="text" id="proveedor" placeholder="Ingrese proveedor">
+          <label for="unidad">Unidad de medida</label>
+          <select id="unidad">
+            <option value="">-- Seleccionar unidad --</option>
+            <option>kg</option>
+            <option>litros</option>
+            <option>unidades</option>
+            <option>cajas</option>
+          </select>
 
           <button type="button">Cargar stock</button>
         </form>
