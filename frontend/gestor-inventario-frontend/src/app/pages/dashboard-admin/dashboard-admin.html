@@ -1,0 +1,178 @@
+
+
+  <div class="sidebar d-flex flex-column p-3" style="width: 250px; min-height: 100vh; background-color: #6F5D44;">
+    <img src="img/pizzaFlow_Icon.png" alt="PizzaFlow" width="120" class="mb-2">
+    <h2 class="text-white mb-4">PizzaFlow</h2>
+    <nav class="nav flex-column">
+      <a class="nav-link text-white" href="index.html">Inicio</a>
+      <a class="nav-link text-white" href="#">Productos</a>
+      <a class="nav-link text-white" href="#">Reposición de stock</a>
+      <a class="nav-link text-white" href="#">Usuarios</a>
+      <a class="nav-link text-white" href="#">Reportes</a>
+      <a class="nav-link text-white" href="#">Alertas</a>
+      <a class="nav-link text-white" href="#">Configuración</a>
+    </nav>
+  </div>
+
+  <main class="dashboard">
+    <header class="header">
+      <div>
+        <h1>Panel Administrador</h1>
+
+        <p>Gestión completa del inventario, usuarios y productos.</p>
+      </div>
+
+      <input type="text" placeholder="Buscar producto, usuario o reporte...">
+    </header>
+
+    <section class="cards">
+
+      <h2 class="visually-hidden">informacion general</h2>
+      
+      <article class="card">
+        <h2>Ventas del día</h2>
+        <p>58 ventas registradas</p>
+        <span class="status ok">Actualizado</span>
+      </article>
+
+      <article class="card">
+        <h2>Stock bajo</h2>
+        <p>4 productos requieren reposición</p>
+        <span class="status low">Atención</span>
+      </article>
+
+      <article class="card">
+        <h2>Productos cargados</h2>
+        <p>128 productos registrados</p>
+        <span class="status_ok">Activo</span>
+      </article>
+
+      <article class="card">
+        <h2>Usuarios activos</h2>
+        <p>7 empleados conectados</p>
+        <span class="status_warning">Supervisar</span>
+      </article>
+
+    </section>
+
+    <section class="content-grid">
+
+      <h2 class="visually-hidden">Gestión del panel</h2>
+
+      <article class="panel">
+
+        <h2>Reposición de stock</h2>
+
+        <form>
+          <label for="producto">
+            Producto
+          </label>
+
+          <select id="producto">
+            <option>Muzzarella</option>
+            <option>Harina</option>
+            <option>Pan de lomo</option>
+            <option>Carne para lomo</option>
+          </select>
+
+          <label for="cantidad">Cantidad ingresada</label>
+
+          <input type="number" id="cantidad" placeholder="Ej: 20">
+
+          <label for="proveedor">Proveedor</label>
+
+          <input type="text" id="proveedor" placeholder="Ingrese proveedor">
+          <label for="unidad">Unidad de medida</label>
+          <select id="unidad">
+            <option value="">-- Seleccionar unidad --</option>
+            <option>kg</option>
+            <option>litros</option>
+            <option>unidades</option>
+            <option>cajas</option>
+          </select>
+
+          <button type="button">Cargar stock</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Gestión rápida</h2>
+
+        <ul class="alerts">
+          <li>Agregar nuevo producto</li>
+          <li>Modificar precios</li>
+          <li>Gestionar usuarios</li>
+          <li>Visualizar reportes</li>
+          <li>Configurar permisos</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Gestión de productos</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Muzzarella</td>
+            <td>Lácteos</td>
+            <td>4 kg</td>
+            <td>$8500</td>
+            <td>Stock bajo</td>
+            <td>Editar</td>
+          </tr>
+
+          <tr>
+            <td>Harina</td>
+            <td>Insumos</td>
+            <td>12 kg</td>
+            <td>$4200</td>
+            <td>Disponible</td>
+            <td>Actualizar</td>
+          </tr>
+
+          <tr>
+            <td>Pan de lomo</td>
+            <td>Panificados</td>
+            <td>10 unidades</td>
+            <td>$1800</td>
+            <td>Reposición necesaria</td>
+            <td>Editar</td>
+          </tr>
+
+          <tr>
+            <td>Carne para lomo</td>
+            <td>Carnes</td>
+            <td>3 kg</td>
+            <td>$12500</td>
+            <td>Crítico</td>
+            <td>Actualizar</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="panel">
+      <h2>Alertas del sistema</h2>
+
+      <ul class="alerts">
+        <li>Muzzarella con stock bajo.</li>
+        <li>Harina próxima a agotarse.</li>
+        <li>Pan de lomo requiere reposición.</li>
+        <li>3 usuarios necesitan actualización de permisos.</li>
+      </ul>
+    </section>
+  </main>
+
