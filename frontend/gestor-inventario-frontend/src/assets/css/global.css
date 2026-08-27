@@ -1,0 +1,144 @@
+/* Reseteo General de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #CCC5B7;
+    color: #6F5D44;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #6F5D44;
+    padding: 30px 20px;
+    color: white;
+}
+
+.sidebar h2 {
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #CCC5B7;
+}
+
+/* Contenedor principal Dashboard */
+.dashboard {
+    flex: 1;
+    padding: 40px;
+}
+
+/* Header */
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    margin-top: 5px;
+}
+
+/* Paneles */
+.panel {
+    background-color: #F5F2EC;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.panel h2 {
+    margin-bottom: 20px;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input,
+form select {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Botones */
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #8B7355;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #5A4A36;
+}
+
+/* Alertas */
+.alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.alerts li {
+    list-style: none;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 5px solid #8B7355;
+}
+
+/* Responsive general */
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header input {
+        width: 100%;
+    }
+
+    .dashboard {
+        padding: 20px;
+    }
+}
