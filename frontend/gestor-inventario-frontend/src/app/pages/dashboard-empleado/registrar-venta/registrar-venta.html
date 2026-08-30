@@ -1,0 +1,65 @@
+<article class="panel">
+  <h2>Registrar venta rápida</h2>
+
+  <form [formGroup]="ventaForm" (ngSubmit) = "registrarVenta()">
+
+    <label for="producto">Producto vendido</label>
+    <select id="producto" formControlName="producto">
+      <option value="">-- Seleccionar producto --</option>
+      <option value="Pizza Muzzarella">Pizza Muzzarella</option>
+      <option value="Pizza Especial">Pizza Especial</option>
+      <option value="Pizza Napolitana">Pizza Napolitana</option>
+      <option value="Lomo Simple">Lomo Simple</option>
+      <option value="Lomo Completo">Lomo Completo</option>
+    </select>
+    @if (producto.invalid && producto.touched) {
+        <small>Selecciona un producto valido.</small>
+    }
+
+    <label for="cantidad">Cantidad</label>
+    <input type="number" id="cantidad" formControlName="cantidad">
+    @if (cantidad.invalid && cantidad.touched) {
+        @if (cantidad.errors?.['required']) {
+            <small>La cantidad es obligatoria.</small>
+        }
+        @if (cantidad.errors?.['min']) {
+            <small>La cantidad minima es: 1</small>
+        }
+        @if (cantidad.errors?.['max']) {
+            <small>El maximo de unidades a vender en una operacion es de: 50'</small>
+        }
+    }
+
+    <button type="submit">Registrar venta</button>
+
+    @if (ventaRegistrada) {
+        <p>Venta registrada con exito.</p>
+    }
+
+  </form>
+</article>
+
+<section class="panel">
+  <h2>Movimientos recientes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Movimiento</th>
+        <th>Producto</th>
+        <th>Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Venta</td>
+        <td>Pizza Muzzarella x2</td>
+        <td>Se descontó muzzarella, salsa, harina y cajas.</td>
+      </tr>
+      <tr>
+        <td>Venta</td>
+        <td>Lomo Completo x1</td>
+        <td>Se descontó pan, carne, queso, lechuga y tomate.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
