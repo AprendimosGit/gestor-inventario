@@ -1,0 +1,22 @@
+<article class="panel">
+  <h2>Registrar venta rápida</h2>
+
+  <form [formGroup]="ventaForm">
+
+    <label for="producto">Producto vendido</label>
+    <select id="producto" formControlName="producto">
+      <option value="">-- Seleccionar producto --</option>
+      <option value="Pizza Muzzarella">Pizza Muzzarella</option>
+      <option value="Pizza Especial">Pizza Especial</option>
+      <option value="Pizza Napolitana">Pizza Napolitana</option>
+      <option value="Lomo Simple">Lomo Simple</option>
+      <option value="Lomo Completo">Lomo Completo</option>
+    </select>
+
+    <label for="cantidad">Cantidad</label>
+    <input type="number" id="cantidad" formControlName="cantidad">
+
+    <button type="submit">Registrar venta</button>
+
+  </form>
+</article>
