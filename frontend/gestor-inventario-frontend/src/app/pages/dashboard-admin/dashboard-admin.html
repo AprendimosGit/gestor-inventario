@@ -63,35 +63,46 @@
 
         <h2>Reposición de stock</h2>
 
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <label for="producto">
             Producto
           </label>
 
-          <select id="producto">
+          <select id="producto" formControlName="producto">
             <option>Muzzarella</option>
             <option>Harina</option>
             <option>Pan de lomo</option>
             <option>Carne para lomo</option>
           </select>
+          @if (form.get('producto')?.invalid && form.get('producto')?.touched) {
+          <p class="error">El producto es obligatorio</p>
+          }
 
           <label for="cantidad">Cantidad ingresada</label>
 
-          <input type="number" id="cantidad" placeholder="Ej: 20">
-
+          <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20">
+          @if (form.get('cantidad')?.invalid && form.get('cantidad')?.touched) {
+          <p class="error">La cantidad es obligatoria</p>
+          }
           <label for="proveedor">Proveedor</label>
 
-          <input type="text" id="proveedor" placeholder="Ingrese proveedor">
+          <input type="text" id="proveedor" formControlName="proveedor" placeholder="Ingrese proveedor">
+          @if (form.get('proveedor')?.invalid && form.get('proveedor')?.touched) {
+          <p class="error">El proveedor es obligatorio</p>
+          }
           <label for="unidad">Unidad de medida</label>
-          <select id="unidad">
+          <select id="unidad" formControlName="unidad">
             <option value="">-- Seleccionar unidad --</option>
             <option>kg</option>
             <option>litros</option>
             <option>unidades</option>
             <option>cajas</option>
           </select>
+          @if (form.get('unidad')?.invalid && form.get('unidad')?.touched) {
+          <p class="error">La unidad es obligatoria</p>
+          }
 
-          <button type="button">Cargar stock</button>
+          <button type="submit">Cargar stock</button>
         </form>
       </article>
 
