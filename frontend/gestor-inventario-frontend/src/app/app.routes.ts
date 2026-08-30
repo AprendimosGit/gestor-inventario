@@ -6,6 +6,7 @@ import { RegistrarVenta } from './pages/dashboard-empleado/registrar-venta/regis
 import { Home } from './pages/home/home';
 import { QuienesSomos } from './pages/quienes-somos/quienes-somos';
 import { Login } from './pages/login/login';
+import { Registro } from './pages/registro/registro';
 
 import { NotFound } from './pages/not-found/not-found';
 
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: "", component: Home },
     { path: "QuienesSomos", component: QuienesSomos },
     { path: "login", component: Login},
+    { path: "registro", component: Registro},
     { path: "dashboardAdmin", component: DashboardAdmin },
     {
         path: "dashboardEmpleado",
