@@ -1,7 +1,7 @@
 <article class="panel">
   <h2>Registrar venta rápida</h2>
 
-  <form [formGroup]="ventaForm">
+  <form [formGroup]="ventaForm" (ngSubmit) = "registrarVenta()">
 
     <label for="producto">Producto vendido</label>
     <select id="producto" formControlName="producto">
@@ -31,6 +31,10 @@
     }
 
     <button type="submit">Registrar venta</button>
+
+    @if (ventaRegistrada) {
+        <p>Venta registrada con exito.</p>
+    }
 
   </form>
 </article>
