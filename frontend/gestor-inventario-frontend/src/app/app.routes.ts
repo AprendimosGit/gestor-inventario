@@ -5,11 +5,14 @@ import { StockEmpleado } from './pages/dashboard-empleado/stock-empleado/stock-e
 import { RegistrarVenta } from './pages/dashboard-empleado/registrar-venta/registrar-venta';
 import { Home } from './pages/home/home';
 import { QuienesSomos } from './pages/quienes-somos/quienes-somos';
+import { Login } from './pages/login/login';
+
 import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
     { path: "", component: Home },
     { path: "QuienesSomos", component: QuienesSomos },
+    { path: "login", component: Login},
     { path: "dashboardAdmin", component: DashboardAdmin },
     {
         path: "dashboardEmpleado",

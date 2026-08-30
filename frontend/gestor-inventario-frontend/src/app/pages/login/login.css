@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #CCC5B7;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #F5F2EC;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.formulario h1 {
+  text-align: center;
+  color: #6F5D44;
+  margin-bottom: 10px;
+}
+
+.formulario label {
+  font-weight: bold;
+  color: #6F5D44;
+}
+
+.formulario input,
+.formulario select {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+.formulario button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #8B7355;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #5A4A36;
+}
+
+.formulario p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-inicio {
+  text-align: center;
+  color: #6F5D44;
+  text-decoration: none;
+}
+
+small {
+  color: #c96d5d;
+  font-size: 13px;
+}
