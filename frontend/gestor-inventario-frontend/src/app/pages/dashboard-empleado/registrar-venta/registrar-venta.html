@@ -12,9 +12,23 @@
       <option value="Lomo Simple">Lomo Simple</option>
       <option value="Lomo Completo">Lomo Completo</option>
     </select>
+    @if (producto.invalid && producto.touched) {
+        <small>Selecciona un producto valido.</small>
+    }
 
     <label for="cantidad">Cantidad</label>
     <input type="number" id="cantidad" formControlName="cantidad">
+    @if (cantidad.invalid && cantidad.touched) {
+        @if (cantidad.errors?.['required']) {
+            <small>La cantidad es obligatoria.</small>
+        }
+        @if (cantidad.errors?.['min']) {
+            <small>La cantidad minima es: 1</small>
+        }
+        @if (cantidad.errors?.['max']) {
+            <small>El maximo de unidades a vender en una operacion es de: 50'</small>
+        }
+    }
 
     <button type="submit">Registrar venta</button>
 
