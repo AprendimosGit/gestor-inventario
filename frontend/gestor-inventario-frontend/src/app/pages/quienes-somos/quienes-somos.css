@@ -2,10 +2,24 @@
     display: flex;
     min-height: 100vh;
 }
+
+@media (max-width: 900px) {
+    :host {
+        flex-direction: column;
+    }
+    
+}
 .sidebar {
     position: sticky;
     top: 0;
     align-self: flex-start;
+}
+@media (max-width: 900px) {
+.sidebar {
+        position: static;
+        min-height: auto;
+        width: 100%;
+    }
 }
 
 .dashboard {
