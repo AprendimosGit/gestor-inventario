@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PizzaFlow</title>
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/pages/landing.css">
-</head>
-<body>
+
     <div class="d-flex flex-column p-3" style="width: 250px; min-height: 100vh; background-color: #6F5D44;">
-    <img src="../maqueta/imagenes/pizzaFlow_Icon.png" alt="PizzaFlow" width="120" class="mb-2">
+    <img src="img/pizzaFlow_Icon.png" alt="PizzaFlow" width="120" class="mb-2">
     <h2 class="text-white mb-4">PizzaFlow</h2>
     <nav class="nav flex-column">
-        <a class="nav-link text-white" href="index.html">Inicio</a>
+        <a class="nav-link text-white" routerLink="/">Inicio</a>
         <a class="nav-link text-white" href="#problemasComunes">Problemas Comunes</a>
         <a class="nav-link text-white" href="#solucion">Solución</a>
         <a class="nav-link text-white" href="#comoFunciona">Cómo funciona</a>
-        <a class="nav-link text-white" href="quienes-somos.html">Quiénes Somos</a>
-        <a class="nav-link text-white" href="login.html">Iniciar sesión</a>
+        <a class="nav-link text-white" routerLink="/QuienesSomos">Quiénes Somos</a>
+        <a class="nav-link text-white" routerLink="/login" routerLinkActive="active-link">Iniciar sesion</a>
     </nav>
 </div>
     <main class="dashboard">
@@ -61,7 +51,7 @@
             <h2>Vista previa</h2>
             <article class="img-container">
                 <h2 class="visually-hidden">Demo de PizzaFlow</h2>
-                <img src="imagenes/demo_stock.png" alt="demo de PizzaFlow">
+                <img src="img/demo_stock.png" alt="demo de PizzaFlow">
             </article>
         </section>
  
@@ -71,5 +61,3 @@
  
     </main>
  
-</body>
-</html>

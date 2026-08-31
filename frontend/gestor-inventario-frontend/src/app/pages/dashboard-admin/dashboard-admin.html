@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Administrador | PizzaFlow</title>
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/pages/dashboard.css">
-</head>
-<body>
-  <div class="d-flex flex-column p-3" style="width: 250px; min-height: 100vh; background-color: #6F5D44;">
-    <img src="../maqueta/imagenes/pizzaFlow_Icon.png" alt="PizzaFlow" width="120" class="mb-2">
+
+
+  <div class="sidebar d-flex flex-column p-3" style="width: 250px; min-height: 100vh; background-color: #6F5D44;">
+    <img src="img/pizzaFlow_Icon.png" alt="PizzaFlow" width="120" class="mb-2">
     <h2 class="text-white mb-4">PizzaFlow</h2>
     <nav class="nav flex-column">
       <a class="nav-link text-white" href="index.html">Inicio</a>
@@ -72,35 +63,46 @@
 
         <h2>Reposición de stock</h2>
 
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <label for="producto">
             Producto
           </label>
 
-          <select id="producto">
+          <select id="producto" formControlName="producto">
             <option>Muzzarella</option>
             <option>Harina</option>
             <option>Pan de lomo</option>
             <option>Carne para lomo</option>
           </select>
+          @if (form.get('producto')?.invalid && form.get('producto')?.touched) {
+          <p class="error">El producto es obligatorio</p>
+          }
 
           <label for="cantidad">Cantidad ingresada</label>
 
-          <input type="number" id="cantidad" placeholder="Ej: 20">
-
+          <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20">
+          @if (form.get('cantidad')?.invalid && form.get('cantidad')?.touched) {
+          <p class="error">La cantidad es obligatoria</p>
+          }
           <label for="proveedor">Proveedor</label>
 
-          <input type="text" id="proveedor" placeholder="Ingrese proveedor">
+          <input type="text" id="proveedor" formControlName="proveedor" placeholder="Ingrese proveedor">
+          @if (form.get('proveedor')?.invalid && form.get('proveedor')?.touched) {
+          <p class="error">El proveedor es obligatorio</p>
+          }
           <label for="unidad">Unidad de medida</label>
-          <select id="unidad">
+          <select id="unidad" formControlName="unidad">
             <option value="">-- Seleccionar unidad --</option>
             <option>kg</option>
             <option>litros</option>
             <option>unidades</option>
             <option>cajas</option>
           </select>
+          @if (form.get('unidad')?.invalid && form.get('unidad')?.touched) {
+          <p class="error">La unidad es obligatoria</p>
+          }
 
-          <button type="button">Cargar stock</button>
+          <button type="submit">Cargar stock</button>
         </form>
       </article>
 
@@ -184,5 +186,4 @@
       </ul>
     </section>
   </main>
-</body>
-</html>
+
