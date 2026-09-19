@@ -12,12 +12,12 @@ import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
     { path: "", component: Home },
-    { path: "QuienesSomos", component: QuienesSomos },
+    { path: "quienes-somos", component: QuienesSomos },
     { path: "login", component: Login},
     { path: "registro", component: Registro},
-    { path: "dashboardAdmin", component: DashboardAdmin },
+    { path: "dashboard-admin", component: DashboardAdmin },
     {
-        path: "dashboardEmpleado",
+        path: "dashboard-empleado",
         component: DashboardEmpleado,
         children: [
             { path: "", redirectTo: "stock", pathMatch: "full" },
