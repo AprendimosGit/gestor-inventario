@@ -1,5 +1,5 @@
 export interface MovimientoStock {
-  id: number;
+  id?: number;
   tipo: string;
   fecha: string;
   cantidad: number;
