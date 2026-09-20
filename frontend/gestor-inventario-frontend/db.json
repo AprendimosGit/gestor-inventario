@@ -1,0 +1,76 @@
+{
+  "productos": [
+    { "id": 1, "nombre": "Lomo", "precio": 15000 },
+    { "id": 2, "nombre": "Lomo al roquefort", "precio": 20000 },
+    { "id": 3, "nombre": "Lomo de bondiola", "precio": 25000 },
+    { "id": 4, "nombre": "Lomo vegetariano", "precio": 20000 },
+    { "id": 5, "nombre": "Papas rústicas", "precio": 10000 },
+    { "id": 6, "nombre": "Pizza muzzarella", "precio": 19000 },
+    { "id": 7, "nombre": "Pizza fugazza y queso", "precio": 27000 },
+    { "id": 8, "nombre": "Pizza especial", "precio": 25000 },
+    { "id": 9, "nombre": "Pizza napolitana", "precio": 27000 },
+    { "id": 10, "nombre": "Pizza palmitos", "precio": 30000 }
+  ],
+
+  "ingredientes": [
+    {"id":1, "nombre": "muzzarella", "unidad_medida":"kg", "stock_actual": 50, "stock_minimo":10 },
+    {"id":2, "nombre": "masa de pizza", "unidad_medida":"unidad", "stock_actual": 100, "stock_minimo":30 },
+    {"id":3, "nombre": "roquefort", "unidad_medida":"kg", "stock_actual": 25, "stock_minimo":10 },
+    {"id":4, "nombre": "lomo", "unidad_medida":"kg", "stock_actual": 10, "stock_minimo":5 },
+    {"id":5, "nombre": "palmitos", "unidad_medida":"kg", "stock_actual": 30, "stock_minimo":10 },
+    {"id":6, "nombre": "papas", "unidad_medida":"kg", "stock_actual": 50, "stock_minimo":10 },
+    {"id":7, "nombre": "harina", "unidad_medida":"kg", "stock_actual": 200, "stock_minimo":50 }
+  ],
+
+  "proveedores": [
+    {"id":1, "nombre": "verduleria", "telefono":"3571323650" },
+    {"id":2, "nombre": "carniceria", "telefono":"3571526564" },
+    {"id":3, "nombre": "lacteos", "telefono":"3534095674" } 
+  ], 
+
+  "roles": [
+    {"id":1, "nombre": "administrador" },
+    {"id":2, "nombre": "empleado" },
+    {"id":3, "nombre": "empleado_admin" } 
+  ], 
+
+  "usuarios": [
+  {"id":1, "nombre": "Federico", "mail":"fede@gmail.com", "password":"Fede1", "id_rol": 1 },
+  {"id":2, "nombre": "Mickaela", "mail":"micaela@gmail.com", "password":"Micka1", "id_rol": 1 },
+  {"id":3, "nombre": "Fermin", "mail":"fermin@gmail.com", "password":"Fermin1", "id_rol": 2 },
+  {"id":4, "nombre": "Maximiliano", "mail":"maximiliano@gmail.com", "password":"Maxi1", "id_rol": 3 }
+  ],
+
+   "ventas": [
+  { "id": 1, "fecha": "2026-09-15", "id_usuario": 1 },
+  { "id": 2, "fecha": "2026-09-16", "id_usuario": 2 },
+  { "id": 3, "fecha": "2026-09-17", "id_usuario": 1 }
+  ],
+
+  "detalle_ventas": [
+  { "id": 1, "id_venta": 1, "id_producto": 4, "cantidad": 1 },
+  { "id": 2, "id_venta": 1, "id_producto": 6, "cantidad": 1 },
+  { "id": 3, "id_venta": 2, "id_producto": 9, "cantidad": 2 },
+  { "id": 4, "id_venta": 3, "id_producto": 5, "cantidad": 3 }
+  ],
+
+  "producto_ingrediente": [
+  { "id": 1, "id_producto": 6, "id_ingrediente": 2, "cantidad_necesaria": 1 },
+  { "id": 2, "id_producto": 6, "id_ingrediente": 1, "cantidad_necesaria": 0.3 },
+  { "id": 3, "id_producto": 6, "id_ingrediente": 7, "cantidad_necesaria": 0.4 },
+  { "id": 4, "id_producto": 1, "id_ingrediente": 4, "cantidad_necesaria": 0.2 },
+  { "id": 5, "id_producto": 2, "id_ingrediente": 4, "cantidad_necesaria": 0.2 },
+  { "id": 6, "id_producto": 2, "id_ingrediente": 3, "cantidad_necesaria": 0.1 },
+  { "id": 7, "id_producto": 5, "id_ingrediente": 6, "cantidad_necesaria": 0.3 },
+  { "id": 8, "id_producto": 10, "id_ingrediente": 5, "cantidad_necesaria": 0.2 }
+  ],
+
+  "movimientos_stock": [
+  { "id": 1, "tipo": "ingreso", "fecha": "2026-09-10", "cantidad": 20, "id_ingrediente": 7, "id_usuario": 1, "id_proveedor": 3, "id_venta": null },
+  { "id": 2, "tipo": "ingreso", "fecha": "2026-09-11", "cantidad": 15, "id_ingrediente": 1, "id_usuario": 1, "id_proveedor": 3, "id_venta": null },
+  { "id": 3, "tipo": "ingreso", "fecha": "2026-09-12", "cantidad": 10, "id_ingrediente": 4, "id_usuario": 1, "id_proveedor": 2, "id_venta": null },
+  { "id": 4, "tipo": "egreso", "fecha": "2026-09-15", "cantidad": 0.2, "id_ingrediente": 4, "id_usuario": 1, "id_proveedor": null, "id_venta": 1 },
+  { "id": 5, "tipo": "egreso", "fecha": "2026-09-15", "cantidad": 1, "id_ingrediente": 2, "id_usuario": 1, "id_proveedor": null, "id_venta": 1 }
+  ]
+  
+}

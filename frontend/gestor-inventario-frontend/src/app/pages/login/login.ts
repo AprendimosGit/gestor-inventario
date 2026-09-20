@@ -35,9 +35,9 @@ export class Login {
     const rolSeleccionado = this.loginForm.controls.rol.value;
 
     if (rolSeleccionado === 'admin') {
-      this.router.navigate(['/dashboardAdmin']);
+      this.router.navigate(['/dashboard-admin']);
     } else {
-      this.router.navigate(['/dashboardEmpleado']);
+      this.router.navigate(['/dashboard-empleado']);
     }
   }
 }
