@@ -69,10 +69,10 @@
           </label>
 
           <select id="producto" formControlName="producto">
-            <option>Muzzarella</option>
-            <option>Harina</option>
-            <option>Pan de lomo</option>
-            <option>Carne para lomo</option>
+          <option value="">-- Seleccionar producto --</option>
+          @for (p of productos; track p.id) {
+          <option [value]="p.nombre">{{ p.nombre }}</option>
+          }
           </select>
           @if (form.get('producto')?.invalid && form.get('producto')?.touched) {
           <p class="error">El producto es obligatorio</p>
