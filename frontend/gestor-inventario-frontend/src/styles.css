@@ -142,3 +142,10 @@ button:hover {
         padding: 20px;
     }
 }
+
+/* Mensajes de error de validación */
+.error {
+    color: #c0392b;
+    font-size: 14px;
+    margin-top: -8px;
+}
