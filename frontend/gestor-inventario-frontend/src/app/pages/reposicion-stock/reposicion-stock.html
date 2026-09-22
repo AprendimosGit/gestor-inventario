@@ -5,21 +5,42 @@
   <label for="ingrediente">Ingrediente</label>
   <select id="ingrediente" formControlName="ingrediente">
     <option value="">Seleccionar ingrediente</option>
+    @for (i of ingredientes; track i.id) {
+        <option [value]="i.id">{{ i.nombre }}</option>
+    }
   </select>
 
+  @if (form.get('ingrediente')?.invalid && form.get('ingrediente')?.touched) 
+  {
+    <p class="error">El ingrediente es obligatorio.</p>
+  }
+
   <label for="cantidad">Cantidad ingresada</label>
-  <input
-    type="number"
-    id="cantidad"
-    formControlName="cantidad"
-    placeholder="Ej: 20"
-  >
+  <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20">
+
+  @if (form.get('cantidad')?.hasError('required') && form.get('cantidad')?.touched) 
+  {
+    <p class="error">La cantidad es obligatoria.</p>
+  }
+
+  @if (form.get('cantidad')?.hasError('min') && form.get('cantidad')?.touched) 
+  {
+    <p class="error">La cantidad debe ser mayor a 0.</p>
+  }
 
   <label for="proveedor">Proveedor</label>
   <select id="proveedor" formControlName="proveedor">
     <option value="">Seleccionar proveedor</option>
+     @for (p of proveedores; track p.id) {
+        <option [value]="p.id">{{ p.nombre }}</option>
+  }
   </select>
 
-  <button type="submit">Cargar stock</button>
+  @if (form.get('proveedor')?.invalid && form.get('proveedor')?.touched) 
+  {
+    <p class="error">El proveedor es obligatorio.</p>
+  }
+
+  <button type="submit" [disabled]="form.invalid">Cargar stock</button>
 
 </form>
