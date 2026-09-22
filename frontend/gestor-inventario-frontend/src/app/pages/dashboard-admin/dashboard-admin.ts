@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StockService } from '../../services/stock.service';
 import { ProductoService } from '../../services/producto.service';
@@ -12,9 +13,10 @@ import { Producto } from '../../models/producto.model';
 import { Usuario } from '../../models/usuario.model';
 import { Venta } from '../../models/venta.model';
 
+
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './dashboard-admin.html',
   styleUrl: './dashboard-admin.css',
 })

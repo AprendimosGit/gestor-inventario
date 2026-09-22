@@ -7,6 +7,7 @@ import { Home } from './pages/home/home';
 import { QuienesSomos } from './pages/quienes-somos/quienes-somos';
 import { Login } from './pages/login/login';
 import { Registro } from './pages/registro/registro';
+import { ReposicionStock } from './pages/reposicion-stock/reposicion-stock';
 
 import { NotFound } from './pages/not-found/not-found';
 
@@ -23,7 +24,9 @@ export const routes: Routes = [
             { path: "", redirectTo: "stock", pathMatch: "full" },
             { path: "stock", component: StockEmpleado },
             { path: "registrar-venta", component: RegistrarVenta },
+           
         ],
     },
+    { path: "reposicion-stock", component: ReposicionStock },
     { path: "**", component: NotFound },
 ];
