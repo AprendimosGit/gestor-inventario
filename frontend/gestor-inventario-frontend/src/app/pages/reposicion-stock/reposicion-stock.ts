@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { StockService } from '../../services/stock.service';
 import { Ingrediente } from '../../models/ingrediente.model';
 import { Proveedor } from '../../models/proveedor.model';
+import { MovimientoStock } from '../../models/movimiento-stock.model';
 
 @Component({
   selector: 'app-reposicion-stock',
@@ -42,5 +43,29 @@ export class ReposicionStock implements OnInit {
                 console.error("Error al cargar proveedores: ", error);
             }
         });
+    }
+    onSubmit():void {
+        if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
+        const movimiento: MovimientoStock = {
+            tipo: 'entrada',
+            fecha: new Date().toISOString(),
+            cantidad: Number(this.form.value.cantidad),
+            id_ingrediente: Number(this.form.value.ingrediente),
+            id_usuario: 1,
+            id_proveedor: Number(this.form.value.proveedor),
+            id_venta: null
+        };
+        console.log('Movimiento a registrar: ' , movimiento)
+        this.stockService.registrarMovimiento(movimiento).subscribe({
+            next: (data) => {
+                console.log('Movimiento registrado: ', data)
+            },
+            error: (error) => {
+                console.error('Error al registrar movimiento: ', error);
+            }
+        })
     }
 }

@@ -346,6 +346,16 @@
       "id_proveedor": 2,
       "id_venta": null,
       "id": "-6_j9HB2mxA"
+    },
+    {
+      "tipo": "entrada",
+      "fecha": "2026-09-22T20:00:36.188Z",
+      "cantidad": 10,
+      "id_ingrediente": 1,
+      "id_usuario": 1,
+      "id_proveedor": 2,
+      "id_venta": null,
+      "id": "3MTY7Jq3vHE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

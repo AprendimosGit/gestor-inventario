@@ -1,6 +1,6 @@
 <h1>Reposición de Stock</h1>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <label for="ingrediente">Ingrediente</label>
   <select id="ingrediente" formControlName="ingrediente">
