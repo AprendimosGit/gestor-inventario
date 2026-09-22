@@ -3,8 +3,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StockService } from '../../services/stock.service';
+import { ProductoService } from '../../services/producto.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { VentaService } from '../../services/venta.service';
 import { Ingrediente } from '../../models/ingrediente.model';
 import { Proveedor } from '../../models/proveedor.model';
+import { Producto } from '../../models/producto.model';
+import { Usuario } from '../../models/usuario.model';
+import { Venta } from '../../models/venta.model';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -16,12 +22,21 @@ export class DashboardAdmin implements OnInit {
   form: FormGroup;
   ingredientes: Ingrediente[] = [];
   proveedores: Proveedor[] = [];
+  productos: Producto[] = [];
+  usuarios: Usuario[] = [];
+  ventas: Venta[] = [];
 
   get ingredientesConAlerta(): Ingrediente[] {
     return this.ingredientes.filter(i => i.stock_actual <= i.stock_minimo);
   }
 
-  constructor(private formBuilder: FormBuilder, private stockService: StockService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private stockService: StockService,
+    private productoService: ProductoService,
+    private usuarioService: UsuarioService,
+    private ventaService: VentaService
+  ) {
     this.form = this.formBuilder.group({
       ingrediente: ['', [Validators.required]],
       cantidad: ['', [Validators.required]],
@@ -35,6 +50,15 @@ export class DashboardAdmin implements OnInit {
     });
     this.stockService.getProveedores().subscribe((data) => {
       this.proveedores = data;
+    });
+    this.productoService.getProductos().subscribe((data) => {
+      this.productos = data;
+    });
+    this.usuarioService.getUsuarios().subscribe((data) => {
+      this.usuarios = data;
+    });
+    this.ventaService.getVentas().subscribe((data) => {
+      this.ventas = data;
     });
   }
 

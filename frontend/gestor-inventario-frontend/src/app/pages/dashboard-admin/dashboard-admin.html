@@ -28,28 +28,28 @@
     <section class="cards">
 
       <h2 class="visually-hidden">informacion general</h2>
-      
+
       <article class="card">
-        <h2>Ventas del día</h2>
-        <p>58 ventas registradas</p>
+        <h2>Ventas registradas</h2>
+        <p>{{ ventas.length }} ventas registradas</p>
         <span class="status ok">Actualizado</span>
       </article>
 
       <article class="card">
         <h2>Stock bajo</h2>
-        <p>4 productos requieren reposición</p>
+        <p>{{ ingredientesConAlerta.length }} ingredientes requieren reposición</p>
         <span class="status low">Atención</span>
       </article>
 
       <article class="card">
         <h2>Productos cargados</h2>
-        <p>128 productos registrados</p>
+        <p>{{ productos.length }} productos registrados</p>
         <span class="status_ok">Activo</span>
       </article>
 
       <article class="card">
-        <h2>Usuarios activos</h2>
-        <p>7 empleados conectados</p>
+        <h2>Usuarios registrados</h2>
+        <p>{{ usuarios.length }} usuarios en el sistema</p>
         <span class="status_warning">Supervisar</span>
       </article>
 
@@ -151,4 +151,3 @@
 </ul>
     </section>
   </main>
-
