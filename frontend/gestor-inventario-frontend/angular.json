@@ -28,9 +28,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "src/assets/css/global.css",
-              "src/assets/css/dashboard.css"
-
+              "src/styles/dashboard.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"

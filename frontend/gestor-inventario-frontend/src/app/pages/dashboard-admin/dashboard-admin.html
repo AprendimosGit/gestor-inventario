@@ -28,28 +28,28 @@
     <section class="cards">
 
       <h2 class="visually-hidden">informacion general</h2>
-      
+
       <article class="card">
-        <h2>Ventas del día</h2>
-        <p>58 ventas registradas</p>
+        <h2>Ventas registradas</h2>
+        <p>{{ ventas.length }} ventas registradas</p>
         <span class="status ok">Actualizado</span>
       </article>
 
       <article class="card">
         <h2>Stock bajo</h2>
-        <p>4 productos requieren reposición</p>
+        <p>{{ ingredientesConAlerta.length }} ingredientes requieren reposición</p>
         <span class="status low">Atención</span>
       </article>
 
       <article class="card">
         <h2>Productos cargados</h2>
-        <p>128 productos registrados</p>
+        <p>{{ productos.length }} productos registrados</p>
         <span class="status_ok">Activo</span>
       </article>
 
       <article class="card">
-        <h2>Usuarios activos</h2>
-        <p>7 empleados conectados</p>
+        <h2>Usuarios registrados</h2>
+        <p>{{ usuarios.length }} usuarios en el sistema</p>
         <span class="status_warning">Supervisar</span>
       </article>
 
@@ -64,42 +64,39 @@
         <h2>Reposición de stock</h2>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <label for="producto">
-            Producto
-          </label>
+          <label for="ingrediente">Ingrediente</label>
 
-          <select id="producto" formControlName="producto">
-            <option>Muzzarella</option>
-            <option>Harina</option>
-            <option>Pan de lomo</option>
-            <option>Carne para lomo</option>
+          <select id="ingrediente" formControlName="ingrediente">
+          <option value="">-- Seleccionar ingrediente --</option>
+          @for (i of ingredientes; track i.id) {
+          <option [value]="i.id">{{ i.nombre }} ({{ i.stock_actual }} {{ i.unidad_medida }})</option>
+          }
           </select>
-          @if (form.get('producto')?.invalid && form.get('producto')?.touched) {
-          <p class="error">El producto es obligatorio</p>
+          @if (form.get('ingrediente')?.invalid && form.get('ingrediente')?.touched) {
+          <p class="error">El ingrediente es obligatorio</p>
           }
 
           <label for="cantidad">Cantidad ingresada</label>
 
-          <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20">
-          @if (form.get('cantidad')?.invalid && form.get('cantidad')?.touched) {
-          <p class="error">La cantidad es obligatoria</p>
+          <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20" min="1">
+          @if (form.get('cantidad')?.touched) {
+          @if (form.get('cantidad')?.errors?.['required']) {
+            <p class="error">La cantidad es obligatoria.</p>
+          }
+          @if (form.get('cantidad')?.errors?.['min']) {
+            <p class="error">La cantidad debe ser mayor a 0.</p>
+          }
           }
           <label for="proveedor">Proveedor</label>
 
-          <input type="text" id="proveedor" formControlName="proveedor" placeholder="Ingrese proveedor">
+          <select id="proveedor" formControlName="proveedor">
+            <option value="">-- Seleccionar proveedor --</option>
+            @for (p of proveedores; track p.id) {
+            <option [value]="p.id">{{ p.nombre }}</option>
+            }
+          </select>
           @if (form.get('proveedor')?.invalid && form.get('proveedor')?.touched) {
           <p class="error">El proveedor es obligatorio</p>
-          }
-          <label for="unidad">Unidad de medida</label>
-          <select id="unidad" formControlName="unidad">
-            <option value="">-- Seleccionar unidad --</option>
-            <option>kg</option>
-            <option>litros</option>
-            <option>unidades</option>
-            <option>cajas</option>
-          </select>
-          @if (form.get('unidad')?.invalid && form.get('unidad')?.touched) {
-          <p class="error">La unidad es obligatoria</p>
           }
 
           <button type="submit">Cargar stock</button>
@@ -125,51 +122,22 @@
       <table>
         <thead>
           <tr>
-            <th>Producto</th>
-            <th>Categoría</th>
-            <th>Stock</th>
-            <th>Precio</th>
+            <th>Ingrediente</th>
+            <th>Stock actual</th>
+            <th>Stock mínimo</th>
             <th>Estado</th>
-            <th>Acción</th>
           </tr>
         </thead>
 
         <tbody>
+          @for (i of ingredientes; track i.id) {
           <tr>
-            <td>Muzzarella</td>
-            <td>Lácteos</td>
-            <td>4 kg</td>
-            <td>$8500</td>
-            <td>Stock bajo</td>
-            <td>Editar</td>
+            <td>{{ i.nombre }}</td>
+            <td>{{ i.stock_actual}} {{i.unidad_medida}}</td>
+            <td>{{ i.stock_minimo }} {{ i.unidad_medida }}</td>
+            <td>{{ i.stock_actual <= i.stock_minimo ? 'Stock bajo' : 'Disponible' }}</td>
           </tr>
-
-          <tr>
-            <td>Harina</td>
-            <td>Insumos</td>
-            <td>12 kg</td>
-            <td>$4200</td>
-            <td>Disponible</td>
-            <td>Actualizar</td>
-          </tr>
-
-          <tr>
-            <td>Pan de lomo</td>
-            <td>Panificados</td>
-            <td>10 unidades</td>
-            <td>$1800</td>
-            <td>Reposición necesaria</td>
-            <td>Editar</td>
-          </tr>
-
-          <tr>
-            <td>Carne para lomo</td>
-            <td>Carnes</td>
-            <td>3 kg</td>
-            <td>$12500</td>
-            <td>Crítico</td>
-            <td>Actualizar</td>
-          </tr>
+        }
         </tbody>
       </table>
 
@@ -179,11 +147,12 @@
       <h2>Alertas del sistema</h2>
 
       <ul class="alerts">
-        <li>Muzzarella con stock bajo.</li>
-        <li>Harina próxima a agotarse.</li>
-        <li>Pan de lomo requiere reposición.</li>
-        <li>3 usuarios necesitan actualización de permisos.</li>
-      </ul>
+        @if (ingredientesConAlerta.length === 0) {
+          <li>Sin alertas por el momento.</li>
+       }
+        @for (i of ingredientesConAlerta; track i.id) {
+         <li>{{ i.nombre }} con stock bajo ({{ i.stock_actual }} {{ i.unidad_medida }} — mínimo: {{ i.stock_minimo }}).</li>
+        }
+</ul>
     </section>
   </main>
-
