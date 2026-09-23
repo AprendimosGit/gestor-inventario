@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -8,9 +9,11 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './registro.html',
   styleUrl: './registro.css',
 })
+
 export class Registro {
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private usuariosService = inject(UsuarioService);
 
   registroForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -40,8 +43,43 @@ export class Registro {
       this.registroForm.markAllAsTouched();
       return;
     }
+    const nombre = this.registroForm.controls.nombre.value;
+    const email = this.registroForm.controls.email.value;
+    const password = this.registroForm.controls.password.value;
+    const confirmarPassword = this.registroForm.controls.confirmarPassword.value;
 
-    console.log('Usuario registrado:', this.registroForm.value);
-    this.router.navigate(['/login']);
+    if (password !== confirmarPassword) {
+      alert('Las contraseñas no coinciden')
+      return;
+    }
+    this.usuariosService.getUsuarios().subscribe({
+      next: (usuarios) => {
+        const usuarioExistente = usuarios.find(
+          usuario => usuario.mail === email
+        );
+        if (usuarioExistente) {
+          alert('El correo electronico ya se encuentra registrado')
+          return;
+        }
+        const nuevoUsuario = {
+          nombre: nombre!,
+          mail: email!,
+          password: password!,
+          id_rol:2
+        };
+        
+        this.usuariosService.crearUsuario(nuevoUsuario).subscribe({
+          next: (usuarioCreado) => {
+            console.log('Usuario registrado: ' , usuarioCreado);
+            alert('Usuario registrado correctamente')
+            this.router.navigate(['/login']);
+          },
+          error: (error) => {
+            console.error('Error al crear usuario:' , error);
+            alert('No se pudo registrar el usuario');
+          }
+        })
+      }
+    })
   }
 }
