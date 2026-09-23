@@ -78,9 +78,14 @@
 
           <label for="cantidad">Cantidad ingresada</label>
 
-          <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20">
-          @if (form.get('cantidad')?.invalid && form.get('cantidad')?.touched) {
-          <p class="error">La cantidad es obligatoria</p>
+          <input type="number" id="cantidad" formControlName="cantidad" placeholder="Ej: 20" min="1">
+          @if (form.get('cantidad')?.touched) {
+          @if (form.get('cantidad')?.errors?.['required']) {
+            <p class="error">La cantidad es obligatoria.</p>
+          }
+          @if (form.get('cantidad')?.errors?.['min']) {
+            <p class="error">La cantidad debe ser mayor a 0.</p>
+          }
           }
           <label for="proveedor">Proveedor</label>
 

@@ -78,6 +78,12 @@ form {
     gap: 15px;
 }
 
+form p {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: green;
+}   
+
 form input,
 form select {
     padding: 12px;
