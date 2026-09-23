@@ -161,6 +161,13 @@
       "mail": "maximiliano@gmail.com",
       "password": "Maxi1",
       "id_rol": 3
+    },
+    {
+      "nombre": "MATEST",
+      "mail": "matest@gmail.com",
+      "password": "Mati123",
+      "id_rol": 2,
+      "id": "enj92UxKv-0"
     }
   ],
   "ventas": [
