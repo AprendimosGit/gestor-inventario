@@ -82,12 +82,18 @@ Cada aplicación contiene sus modelos con validaciones (`models.py`), sus serial
 
 Todas las rutas parten del prefijo `/api/v1/`.
 
-| M�todo | Ruta | Descripción | Códigos de estado |
+| Método | Ruta | Descripción | Códigos de estado |
 |---|---|---|---|
 | GET | `/api/v1/productos/` | Lista todos los productos | 200 |
 | POST | `/api/v1/productos/` | Crea un producto | 201, 400 |
+| GET | `/api/v1/productos/<id>/` | Devuelve un producto | 200, 404 |
+| PUT | `/api/v1/productos/<id>/` | Modifica un producto | 200, 400, 404 |
+| DELETE | `/api/v1/productos/<id>/` | Elimina un producto | 204, 404 |
 | GET | `/api/v1/ingredientes/` | Lista todos los ingredientes | 200 |
 | POST | `/api/v1/ingredientes/` | Crea un ingrediente | 201, 400 |
+| GET | `/api/v1/ingredientes/<id>/` | Devuelve un ingrediente | 200, 404 |
+| PUT | `/api/v1/ingredientes/<id>/` | Modifica un ingrediente | 200, 400, 404 |
+| DELETE | `/api/v1/ingredientes/<id>/` | Elimina un ingrediente | 204, 404 |
 | GET | `/api/v1/producto-ingredientes/` | Lista todas las recetas | 200 |
 | POST | `/api/v1/producto-ingredientes/` | Crea una receta | 201, 400 |
 
