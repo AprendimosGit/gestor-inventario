@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Producto, Ingrediente
-from .serializers import ProductoSerializer, IngredienteSerializer
+from .models import Producto, Ingrediente, ProductoIngrediente
+from .serializers import ProductoSerializer, IngredienteSerializer, ProductoIngredienteSerializer
 
 
 
@@ -29,6 +29,20 @@ class IngredienteListView(APIView):
 
     def post(self, request):
         serializer = IngredienteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ProductoIngredienteListView(APIView):
+
+    def get(self, request):
+        productoingredientes = ProductoIngrediente.objects.all()
+        serializer = ProductoIngredienteSerializer(productoingredientes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        serializer = ProductoIngredienteSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
