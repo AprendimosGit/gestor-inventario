@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'productos',
+    'stock',
     'corsheaders'
 ]
 
@@ -66,7 +67,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pizzaflow',
         'USER': 'postgres',
-        'PASSWORD': 'ROOT',
+        'PASSWORD': 'ale123',
         'HOST': 'localhost',
         'PORT': '5432',
     }
