@@ -7,7 +7,7 @@ import { Venta } from '../models/venta.model';
   providedIn: 'root'
 })
 export class VentaService {
-  private ventasUrl = 'http://localhost:3001/ventas';
+  private ventasUrl = 'http://localhost:8000/api/v1/ventas/';
 
   constructor(private http: HttpClient) {}
 
