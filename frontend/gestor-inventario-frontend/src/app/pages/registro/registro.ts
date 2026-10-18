@@ -9,7 +9,6 @@ import { UsuarioService } from '../../services/usuario.service';
   templateUrl: './registro.html',
   styleUrl: './registro.css',
 })
-
 export class Registro {
   private fb = inject(FormBuilder);
   private router = inject(Router);
@@ -17,6 +16,7 @@ export class Registro {
 
   registroForm = this.fb.group({
     nombre: ['', Validators.required],
+    apellido: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmarPassword: ['', Validators.required],
@@ -24,6 +24,10 @@ export class Registro {
 
   get nombre() {
     return this.registroForm.controls.nombre;
+  }
+
+  get apellido() {
+    return this.registroForm.controls.apellido;
   }
 
   get email() {
@@ -43,43 +47,48 @@ export class Registro {
       this.registroForm.markAllAsTouched();
       return;
     }
-    const nombre = this.registroForm.controls.nombre.value;
-    const email = this.registroForm.controls.email.value;
-    const password = this.registroForm.controls.password.value;
-    const confirmarPassword = this.registroForm.controls.confirmarPassword.value;
+
+    const nombre = this.nombre.value!;
+    const apellido = this.apellido.value!;
+    const mail = this.email.value!;
+    const password = this.password.value!;
+    const confirmarPassword = this.confirmarPassword.value!;
 
     if (password !== confirmarPassword) {
-      alert('Las contraseñas no coinciden')
+      alert('Las contraseñas no coinciden.');
       return;
     }
+
     this.usuariosService.getUsuarios().subscribe({
       next: (usuarios) => {
-        const usuarioExistente = usuarios.find(
-          usuario => usuario.mail === email
-        );
-        if (usuarioExistente) {
-          alert('El correo electronico ya se encuentra registrado')
+        if (usuarios.some((usuario) => usuario.mail === mail)) {
+          alert('El correo electrónico ya se encuentra registrado.');
           return;
         }
+
         const nuevoUsuario = {
-          nombre: nombre!,
-          mail: email!,
-          password: password!,
-          id_rol:2
+          nombre,
+          apellido,
+          mail,
+          password,
+          rol: 2,
         };
-        
+
         this.usuariosService.crearUsuario(nuevoUsuario).subscribe({
-          next: (usuarioCreado) => {
-            console.log('Usuario registrado: ' , usuarioCreado);
-            alert('Usuario registrado correctamente')
+          next: () => {
+            alert('Usuario registrado correctamente.');
             this.router.navigate(['/login']);
           },
           error: (error) => {
-            console.error('Error al crear usuario:' , error);
-            alert('No se pudo registrar el usuario');
-          }
-        })
-      }
-    })
+            console.error('Error al crear usuario:', error);
+            alert('No se pudo registrar el usuario.');
+          },
+        });
+      },
+      error: (error) => {
+        console.error('Error al consultar usuarios:', error);
+        alert('No se pudo conectar con el servidor.');
+      },
+    });
   }
 }
