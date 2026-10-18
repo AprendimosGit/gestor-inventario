@@ -1,9 +1,11 @@
 from django.urls import path, include
-from .views import (VentaListCreateAPIView, VentaDetailAPIView, UsuarioListCreateAPIView, UsuarioDetailAPIView)
+from .views import (VentaListCreateAPIView, VentaDetailAPIView, UsuarioListCreateAPIView, UsuarioDetailAPIView, RolListCreateAPIView, LoginAPIView)
 
 urlpatterns = [
     path("ventas/", VentaListCreateAPIView.as_view(), name="ventas-list-create"),
     path("ventas/<int:pk>/", VentaDetailAPIView.as_view(), name="ventas-detail"),
     path("usuarios/", UsuarioListCreateAPIView.as_view(), name="usuarios-list-create"),
     path("usuarios/<int:pk>/", UsuarioDetailAPIView.as_view(), name="usuarios-detail"),
-]
+    path("roles/", RolListCreateAPIView.as_view(), name="roles-list-create"),
+    path("login/", LoginAPIView.as_view(), name="login"),
+    ]

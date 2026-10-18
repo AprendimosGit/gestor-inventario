@@ -32,29 +32,27 @@ export class Login {
       this.loginForm.markAllAsTouched();
       return;
     }
-    const email = this.loginForm.controls.email.value;
-    const password = this.loginForm.controls.password.value;
 
-    this.usuariosService.getUsuarios().subscribe({
-      next: (usuarios) => {
-        const usuario = usuarios.find(
-          u => u.mail === email && u.password === password
-        );
-        if (!usuario) {
-          alert('Correo o contraseña incorrectos.');
-          return;
-        }
-        console.log('Usuario verificado ', usuario);
-        if (usuario.id_rol === 1) {
+    const mail = this.email.value!;
+    const password = this.password.value!;
+
+    this.usuariosService.login(mail, password).subscribe({
+      next: (usuario) => {
+        if (usuario.rol === 1) {
           this.router.navigate(['/dashboard-admin']);
-        } else if (usuario.id_rol === 2 || usuario.id_rol === 3) {
+        } else {
           this.router.navigate(['/dashboard-empleado']);
         }
       },
       error: (error) => {
-        console.error('Error al consultar usuarios: ', error)
-        alert('No se pudo conectar con el servidor');
-      }
+        console.error('Error al iniciar sesión:', error);
+
+        if (error.status === 401) {
+          alert('Correo o contraseña incorrectos.');
+        } else {
+          alert('No se pudo conectar con el servidor.');
+        }
+      },
     });
   }
 }
