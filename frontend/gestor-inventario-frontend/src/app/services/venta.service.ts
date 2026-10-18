@@ -14,4 +14,11 @@ export class VentaService {
   getVentas(): Observable<Venta[]> {
     return this.http.get<Venta[]>(this.ventasUrl);
   }
+
+  registrarVenta(venta: {
+    usuario: number;
+    total: number;
+  }): Observable<Venta> {
+    return this.http.post<Venta>(this.ventasUrl, venta);
+  }
 }
