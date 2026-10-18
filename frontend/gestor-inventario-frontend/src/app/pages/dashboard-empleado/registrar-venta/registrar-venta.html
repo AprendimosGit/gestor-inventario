@@ -1,46 +1,59 @@
 <article class="panel">
   <h2>Registrar venta rápida</h2>
 
-  <form [formGroup]="ventaForm" (ngSubmit) = "registrarVenta()">
-
+  <form [formGroup]="ventaForm" (ngSubmit)="registrarVenta()">
     <label for="producto">Producto vendido</label>
+
     <select id="producto" formControlName="producto">
       <option value="">-- Seleccionar producto --</option>
-      <option value="Pizza Muzzarella">Pizza Muzzarella</option>
-      <option value="Pizza Especial">Pizza Especial</option>
-      <option value="Pizza Napolitana">Pizza Napolitana</option>
-      <option value="Lomo Simple">Lomo Simple</option>
-      <option value="Lomo Completo">Lomo Completo</option>
+      @for (p of productos; track p.id) {
+        <option [value]="p.id">
+          {{ p.nombre }} - ${{ p.precio }}
+        </option>
+      }
     </select>
+
     @if (producto.invalid && producto.touched) {
-        <small>Selecciona un producto valido.</small>
+      <small>Seleccioná un producto válido.</small>
     }
 
     <label for="cantidad">Cantidad</label>
-    <input type="number" id="cantidad" formControlName="cantidad">
+
+    <input
+      type="number"
+      id="cantidad"
+      formControlName="cantidad"
+    >
+
     @if (cantidad.invalid && cantidad.touched) {
-        @if (cantidad.errors?.['required']) {
-            <small>La cantidad es obligatoria.</small>
-        }
-        @if (cantidad.errors?.['min']) {
-            <small>La cantidad minima es: 1</small>
-        }
-        @if (cantidad.errors?.['max']) {
-            <small>El maximo de unidades a vender en una operacion es de: 50'</small>
-        }
+      @if (cantidad.errors?.['required']) {
+        <small>La cantidad es obligatoria.</small>
+      }
+      @if (cantidad.errors?.['min']) {
+        <small>La cantidad mínima es 1.</small>
+      }
+      @if (cantidad.errors?.['max']) {
+        <small>El máximo por operación es de 50 unidades.</small>
+      }
     }
 
-    <button type="submit">Registrar venta</button>
+    <button type="submit" [disabled]="guardando">
+      {{ guardando ? 'Guardando...' : 'Registrar venta' }}
+    </button>
 
     @if (ventaRegistrada) {
-        <p>Venta registrada con exito.</p>
+      <p>¡Venta registrada con éxito!</p>
     }
 
+    @if (errorVenta) {
+      <p>{{ errorVenta }}</p>
+    }
   </form>
 </article>
 
 <section class="panel">
   <h2>Movimientos recientes</h2>
+
   <table>
     <thead>
       <tr>
@@ -49,17 +62,22 @@
         <th>Detalle</th>
       </tr>
     </thead>
+
     <tbody>
-      <tr>
-        <td>Venta</td>
-        <td>Pizza Muzzarella x2</td>
-        <td>Se descontó muzzarella, salsa, harina y cajas.</td>
-      </tr>
-      <tr>
-        <td>Venta</td>
-        <td>Lomo Completo x1</td>
-        <td>Se descontó pan, carne, queso, lechuga y tomate.</td>
-      </tr>
+      @for (movimiento of movimientos; track $index) {
+        <tr>
+          <td>Venta #{{ movimiento.id }}</td>
+          <td>{{ movimiento.producto }} x{{ movimiento.cantidad }}</td>
+          <td>
+            Total: ${{ movimiento.total.toLocaleString('es-AR') }}
+            — {{ movimiento.fecha | date:'dd/MM/yyyy HH:mm' }}
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="3">Todavía no hay ventas registradas.</td>
+        </tr>
+      }
     </tbody>
   </table>
 </section>
