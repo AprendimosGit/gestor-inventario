@@ -22,7 +22,7 @@ class MovimientoStock(models.Model):
 
     tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
     fecha = models.DateField()
-    cantidad = models.DecimalField(max_digits=10, decimal_places=2)
+    cantidad = models.DecimalField(max_digits=10, decimal_places=3)
     ingrediente = models.ForeignKey(Ingrediente, on_delete=models.PROTECT)
     proveedor = models.ForeignKey(Proveedor, on_delete=models.SET_NULL, null=True, blank=True)
     
