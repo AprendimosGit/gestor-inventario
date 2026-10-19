@@ -1,0 +1,224 @@
+[
+    {
+        "model": "productos.producto",
+        "pk": 1,
+        "fields": {
+            "nombre": "Lomo",
+            "precio": "15000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 2,
+        "fields": {
+            "nombre": "Lomo al roquefort",
+            "precio": "20000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 3,
+        "fields": {
+            "nombre": "Lomo de bondiola",
+            "precio": "25000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 4,
+        "fields": {
+            "nombre": "Lomo vegetariano",
+            "precio": "20000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 5,
+        "fields": {
+            "nombre": "Papas rústicas",
+            "precio": "10000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 6,
+        "fields": {
+            "nombre": "Pizza muzzarella",
+            "precio": "19000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 7,
+        "fields": {
+            "nombre": "Pizza fugazza y queso",
+            "precio": "27000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 8,
+        "fields": {
+            "nombre": "Pizza especial",
+            "precio": "25000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 9,
+        "fields": {
+            "nombre": "Pizza napolitana",
+            "precio": "27000.00"
+        }
+    },
+    {
+        "model": "productos.producto",
+        "pk": 10,
+        "fields": {
+            "nombre": "Pizza palmitos",
+            "precio": "30000.00"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 1,
+        "fields": {
+            "nombre": "muzzarella",
+            "unidad_medida": "kg",
+            "stock_actual": "50.000",
+            "stock_minimo": "10.000"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 2,
+        "fields": {
+            "nombre": "masa de pizza",
+            "unidad_medida": "unidad",
+            "stock_actual": "100.000",
+            "stock_minimo": "30.000"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 3,
+        "fields": {
+            "nombre": "roquefort",
+            "unidad_medida": "kg",
+            "stock_actual": "25.000",
+            "stock_minimo": "10.000"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 4,
+        "fields": {
+            "nombre": "lomo",
+            "unidad_medida": "kg",
+            "stock_actual": "10.000",
+            "stock_minimo": "5.000"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 5,
+        "fields": {
+            "nombre": "palmitos",
+            "unidad_medida": "kg",
+            "stock_actual": "30.000",
+            "stock_minimo": "10.000"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 6,
+        "fields": {
+            "nombre": "papas",
+            "unidad_medida": "kg",
+            "stock_actual": "50.000",
+            "stock_minimo": "10.000"
+        }
+    },
+    {
+        "model": "productos.ingrediente",
+        "pk": 7,
+        "fields": {
+            "nombre": "harina",
+            "unidad_medida": "kg",
+            "stock_actual": "200.000",
+            "stock_minimo": "50.000"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 1,
+        "fields": {
+            "producto": 6,
+            "ingrediente": 2,
+            "cantidad_necesaria": "1.000"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 2,
+        "fields": {
+            "producto": 6,
+            "ingrediente": 1,
+            "cantidad_necesaria": "0.300"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 3,
+        "fields": {
+            "producto": 6,
+            "ingrediente": 7,
+            "cantidad_necesaria": "0.400"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 4,
+        "fields": {
+            "producto": 1,
+            "ingrediente": 4,
+            "cantidad_necesaria": "0.200"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 5,
+        "fields": {
+            "producto": 2,
+            "ingrediente": 4,
+            "cantidad_necesaria": "0.200"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 6,
+        "fields": {
+            "producto": 2,
+            "ingrediente": 3,
+            "cantidad_necesaria": "0.100"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 7,
+        "fields": {
+            "producto": 5,
+            "ingrediente": 6,
+            "cantidad_necesaria": "0.300"
+        }
+    },
+    {
+        "model": "productos.productoingrediente",
+        "pk": 8,
+        "fields": {
+            "producto": 10,
+            "ingrediente": 5,
+            "cantidad_necesaria": "0.200"
+        }
+    }
+]
