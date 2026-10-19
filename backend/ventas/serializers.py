@@ -1,11 +1,8 @@
-
 from decimal import Decimal
-
 from django.db import transaction
 from django.utils import timezone
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
-
 from .models import Venta, Detalle_Venta, Usuario, Rol
 from productos.models import ProductoIngrediente
 from stock.models import MovimientoStock
