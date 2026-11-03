@@ -26,7 +26,9 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.usuariosUrl);
   }
 
-  crearUsuario(usuario: Omit<Usuario, 'id'>): Observable<Usuario> {
-    return this.http.post<Usuario>(this.usuariosUrl, usuario);
-  }
+  crearUsuario(
+  usuario: Omit<Usuario, 'id' | 'rol'>
+): Observable<Usuario> {
+  return this.http.post<Usuario>(this.usuariosUrl, usuario);
+}
 }

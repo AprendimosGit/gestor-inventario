@@ -125,18 +125,30 @@ class VentaSerializer(serializers.ModelSerializer):
         return venta
 
 
+
 class UsuarioSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=6)
+    rol = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Usuario
         fields = ["id", "nombre", "apellido", "mail", "password", "rol"]
 
     def create(self, validated_data):
+        try:
+            rol_empleado = Rol.objects.get(nombre__iexact="Empleado")
+        except Rol.DoesNotExist:
+            raise serializers.ValidationError({
+                "rol": "No se encontró el rol Empleado en la base de datos."
+            })
+
+        validated_data["rol"] = rol_empleado
         validated_data["password"] = make_password(
             validated_data["password"]
         )
+
         return Usuario.objects.create(**validated_data)
+
 
 
 class RolSerializer(serializers.ModelSerializer):

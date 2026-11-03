@@ -67,12 +67,11 @@ export class Registro {
         }
 
         const nuevoUsuario = {
-          nombre,
-          apellido,
-          mail,
-          password,
-          rol: 2,
-        };
+  nombre,
+  apellido,
+  mail,
+  password
+};
 
         this.usuariosService.crearUsuario(nuevoUsuario).subscribe({
           next: () => {
