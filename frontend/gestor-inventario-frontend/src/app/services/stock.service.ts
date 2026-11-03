@@ -13,13 +13,13 @@ import { API_BASE_URL } from '../config/api.config';
 export class StockService {
 
   private proveedoresUrl = `${API_BASE_URL}/proveedores/`;
-  private apiUrl = `${API_BASE_URL}/ingredientes/`;
+  private ingredientesUrl = `${API_BASE_URL}/ingredientes/`;
   private movimientosUrl = `${API_BASE_URL}/movimientos-stock/`;
 
   constructor(private http: HttpClient) {}
 
   getIngredientes(): Observable<Ingrediente[]> {
-    return this.http.get<Ingrediente[]>(this.apiUrl);
+    return this.http.get<Ingrediente[]>(this.ingredientesUrl);
   }
 
   getProveedores(): Observable<Proveedor[]> {

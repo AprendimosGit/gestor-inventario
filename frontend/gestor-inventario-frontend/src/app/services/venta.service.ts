@@ -1,12 +1,14 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Venta } from '../models/venta.model';
+import { API_BASE_URL } from '../config/api.config';
 
 export interface DetalleVentaRequest {
   producto: number;
   cantidad: number;
-  precio_unitario: number;
+  subtotal: number;
 }
 
 export interface CrearVentaRequest {
@@ -16,15 +18,15 @@ export interface CrearVentaRequest {
 }
 
 export interface VentaConDetalles extends Venta {
-  detalles: Array<DetalleVentaRequest & { id: number }>;
+  detalles: DetalleVentaRequest[];
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class VentaService {
-  private ventasUrl = 'http://localhost:8000/api/v1/ventas/';
+
+  private ventasUrl = `${API_BASE_URL}/ventas/`;
 
   constructor(private http: HttpClient) {}
 
@@ -32,7 +34,12 @@ export class VentaService {
     return this.http.get<VentaConDetalles[]>(this.ventasUrl);
   }
 
-  registrarVenta(venta: CrearVentaRequest): Observable<VentaConDetalles> {
-    return this.http.post<VentaConDetalles>(this.ventasUrl, venta);
+  registrarVenta(
+    venta: CrearVentaRequest
+  ): Observable<VentaConDetalles> {
+    return this.http.post<VentaConDetalles>(
+      this.ventasUrl,
+      venta
+    );
   }
 }

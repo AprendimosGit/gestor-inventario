@@ -62,25 +62,46 @@ export class DashboardAdmin implements OnInit {
     });
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      const movimiento = {
-        tipo: 'entrada',
-        fecha: new Date().toISOString(),
-        cantidad: +this.form.value.cantidad,
-        id_ingrediente: +this.form.value.ingrediente,
-        id_usuario: 1,
-        id_proveedor: +this.form.value.proveedor,
-        id_venta: null,
-      };
-      this.stockService.registrarMovimiento(movimiento).subscribe(() => {
-          alert('Movimiento registrado exitosamente');
-          this.form.reset();
-        },
-        error => {
-          console.error('Error al registrar el movimiento:', error);
-          alert('Ocurrió un error al registrar el movimiento. Por favor, inténtalo de nuevo.');
-        });
+
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
     }
+
+    const movimiento = {
+      tipo: 'ingreso' as const,
+      fecha: new Date().toISOString().split('T')[0],
+      cantidad: Number(this.form.value.cantidad),
+      ingrediente: Number(this.form.value.ingrediente),
+      proveedor: Number(this.form.value.proveedor)
+    };
+
+    this.stockService.registrarMovimiento(movimiento).subscribe({
+      next: () => {
+        alert('Movimiento registrado exitosamente');
+        this.form.reset();
+
+        // Actualizar los ingredientes para reflejar el stock nuevo.
+        this.stockService.getIngredientes().subscribe({
+          next: (data) => {
+            this.ingredientes = data;
+          },
+          error: (error) => {
+            console.error('Error al actualizar los ingredientes:', error);
+          }
+        });
+      },
+      error: (error) => {
+        console.error(
+          'Error al registrar el movimiento:',
+          error.error
+        );
+
+        alert(
+          'No se pudo registrar el movimiento. Revisá los datos e intentá nuevamente.'
+        );
+      }
+    });
   }
 }

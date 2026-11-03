@@ -1,10 +1,8 @@
 export interface MovimientoStock {
   id?: number;
-  tipo: string;
+  tipo: 'ingreso' | 'egreso';
   fecha: string;
   cantidad: number;
-  id_ingrediente: number;
-  id_usuario: number;
-  id_proveedor: number | null;
-  id_venta: number | null;
+  ingrediente: number;
+  proveedor: number | null;
 }

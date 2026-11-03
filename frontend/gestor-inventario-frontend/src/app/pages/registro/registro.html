@@ -7,6 +7,11 @@
     @if (nombre.invalid && nombre.touched) {
       <small>El nombre es obligatorio.</small>
     }
+    <label for="apellido">Apellido</label>
+    <input type="text" id="apellido" formControlName="apellido">
+    @if (apellido.invalid && apellido.touched) {
+      <small>El apellido es obligatorio.</small>
+    }
 
     <label for="email">Correo electronico</label>
     <input type="email" id="email" formControlName="email">

@@ -1,12 +1,33 @@
+
 <div class="dashboard-empleado-layout d-flex flex-column flex-lg-row">
 
   <aside class="sidebar d-flex flex-column p-3">
     <img src="img/pizzaFlow_Icon.png" alt="PizzaFlow" width="120" class="mb-2">
     <h2 class="text-white mb-4">PizzaFlow</h2>
+
     <nav class="nav flex-column">
-      <a class="nav-link text-white" routerLink="/">Inicio</a>
-      <a class="nav-link text-white" routerLink="stock" routerLinkActive="active-link">Stock</a>
-      <a class="nav-link text-white" routerLink="registrar-venta" routerLinkActive="active-link">Registrar venta</a>
+      <a
+        class="nav-link text-white"
+        routerLink="/"
+      >
+        Inicio
+      </a>
+
+      <a
+        class="nav-link text-white"
+        routerLink="stock"
+        routerLinkActive="active-link"
+      >
+        Stock
+      </a>
+
+      <a
+        class="nav-link text-white"
+        routerLink="registrar-venta"
+        routerLinkActive="active-link"
+      >
+        Registrar venta
+      </a>
     </nav>
   </aside>
 
@@ -17,6 +38,35 @@
         <p>Control rápido de stock para pizzas y lomos.</p>
       </div>
     </header>
+
+    @if (cargando) {
+      <p role="status">Cargando información del sistema...</p>
+    }
+
+    @if (errorCarga) {
+      <p role="alert" class="error">
+        {{ errorCarga }}
+      </p>
+    }
+
+    @if (!cargando) {
+      <section class="cards">
+        <article class="card">
+          <h2>Ventas registradas</h2>
+          <p>{{ ventas.length }} ventas</p>
+        </article>
+
+        <article class="card">
+          <h2>Ingredientes registrados</h2>
+          <p>{{ ingredientes.length }} ingredientes</p>
+        </article>
+
+        <article class="card">
+          <h2>Ingredientes con stock bajo</h2>
+          <p>{{ ingredientesConStockBajo.length }} requieren revisión</p>
+        </article>
+      </section>
+    }
 
     <router-outlet></router-outlet>
   </main>
