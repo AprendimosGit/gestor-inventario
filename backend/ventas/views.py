@@ -12,7 +12,7 @@ class VentaListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = VentaSerializer
 
 
-class VentaDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+class VentaDetailAPIView(generics.RetrieveAPIView):
     queryset = Venta.objects.all()
     serializer_class = VentaSerializer
 
