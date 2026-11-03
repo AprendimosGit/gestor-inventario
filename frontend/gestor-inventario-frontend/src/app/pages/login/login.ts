@@ -1,7 +1,14 @@
+
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
+
+interface UsuarioLogin {
+  id: number;
+  nombre: string;
+  rol: number;
+}
 
 @Component({
   selector: 'app-login',
@@ -37,7 +44,14 @@ export class Login {
     const password = this.password.value!;
 
     this.usuariosService.login(mail, password).subscribe({
-      next: (usuario) => {
+      next: (usuario: UsuarioLogin) => {
+        if (!usuario.id || !usuario.rol) {
+          alert('El servidor no devolvió los datos del usuario.');
+          return;
+        }
+
+        sessionStorage.setItem('usuario', JSON.stringify(usuario));
+
         if (usuario.rol === 1) {
           this.router.navigate(['/dashboard-admin']);
         } else {
