@@ -1,22 +1,65 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { UsuarioService } from '../../services/usuario.service';
 
-import { Login } from './login';
+@Component({
+  selector: 'app-login',
+  imports: [ReactiveFormsModule, RouterLink],
+  templateUrl: './login.html',
+  styleUrl: './login.css',
+})
+export class Login {
+  private usuariosService = inject(UsuarioService);
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
 
-describe('Login', () => {
-  let component: Login;
-  let fixture: ComponentFixture<Login>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Login],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Login);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  get email() {
+    return this.loginForm.controls.email;
+  }
+
+  get password() {
+    return this.loginForm.controls.password;
+  }
+
+  ingresar(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+    const mail = this.email.value!;
+    const password = this.password.value!;
+
+    this.usuariosService.login(mail, password).subscribe({
+      next: (usuario) => {
+        // Guardamos la identidad devuelta por el backend para usarla en la venta.
+        // Esto NO reemplaza la autenticación/autorización segura del servidor.
+        sessionStorage.setItem('pizzaflow_usuario', JSON.stringify({
+          id: usuario.id,
+          nombre: usuario.nombre,
+          rol: usuario.rol,
+        }));
+        if (usuario.rol === 1) {
+          this.router.navigate(['/dashboard-admin']);
+        } else {
+          this.router.navigate(['/dashboard-empleado']);
+        }
+      },
+      error: (error) => {
+        console.error('Error al iniciar sesión:', error);
+
+        if (error.status === 401) {
+          alert('Correo o contraseña incorrectos.');
+        } else {
+          alert('No se pudo conectar con el servidor.');
+        }
+      },
+    });
+  }
+}
